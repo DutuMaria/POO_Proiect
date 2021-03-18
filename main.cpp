@@ -12,13 +12,22 @@
 using namespace std;
 
 int main(){
-    Venue v1("name", "location", 100);
-    VenueManager vm1("name");
-//    Event e1("name", "date", "Venue");
+    Venue v1("name1", "St. Soarelui, nr. 22", 500);
+    Venue v2("name2", "St. Amurgului, nr.17", 1000);
+    Venue v3("name3", "St. Morii, nr 19", 2000);
+    VenueManager vm1("name vm1");
+    vm1.addVenue(v1);
+    vm1.addVenue(v2);
+    vm1.addVenue(v3);
+//    operator<<(std::cout, v1);
+    operator<<(std::cout, vm1);
+
+//    std::cout<<v1<<v2;
+//    Event e1("name", "date", Venue::Venue(v1));
 //    EventManager em1("name");
-    Participant p1("name", "telephone", 12);
+//    Participant p1("name", "telephone", 12);
 //    Invitation i1("response, accepted, declined", "plus one -> bool");
-//    Organizator o1("name", "contact list");
+//    Organizator o1("name");
 
 
 //    constexpr auto ymd {std::chrono::July/1/2021};

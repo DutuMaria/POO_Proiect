@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include <ostream>
 #include <chrono>
 #include <utility>
 #include <unordered_map>
@@ -15,11 +16,16 @@ class Venue {
 private:
     std::string name, location;
     int capacity;
-    std::unordered_map<std::string, std::vector<std::string>> UnavailableDates;
+//    std::unordered_map<std::string, std::vector<std::string>> UnavailableDates;
 
 public:
     Venue(const std::string &name, const std:: string &location, int capacity);
-    std::string generateVenue(int capacity, std::string date );
+    Venue(const Venue &ob);
+    std::string getName();
+    std::string getLocation();
+    int getCapacity();
+    Venue &operator=(const Venue &venue);
+    friend std::ostream &operator<<(std::ostream &os, const Venue &venue);
     virtual ~Venue();
 
 

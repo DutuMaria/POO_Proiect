@@ -5,8 +5,17 @@
 #ifndef POO_PROIECT_ORGANIZATOR_H
 #define POO_PROIECT_ORGANIZATOR_H
 
+#include <ostream>
+#include <string>
 
 class Organizator {
+private:
+    std::string name;
+
+public:
+    explicit Organizator(const std::string &name);
+    std::string getName();
+    friend std::ostream &operator<<(std::ostream &os, const Organizator &organizator);
 
 };
 
