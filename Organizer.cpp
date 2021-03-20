@@ -9,7 +9,7 @@
 Organizer::Organizer(std::string _name): name(std::move(_name)) {}
 
 void Organizer::setName(const std::string &_name) {
-    name = _name
+    name = _name;
 }
 
 std::string Organizer::getName()const {

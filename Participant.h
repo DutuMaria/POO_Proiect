@@ -13,11 +13,11 @@
 class Participant {
 private:
     std::string name, telephone;
-    int age;
+    int id, age;
     std::vector<Event> events;
 
 public:
-    Participant(std::string _name, std::string _telephone, int _age);
+    Participant(int _id, std::string _name, std::string _telephone, int _age);
     void setName(const std::string &_name);
     void setTelephone(const std::string &_telephone);
     void setAge(int _age);

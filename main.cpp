@@ -25,7 +25,7 @@ int main(){
 //    std::cout<<v1<<v2;
     Event e1("nunta", "20/03/2021", v1);
 //    EventManager em1("name");
-    Participant p1("name", "telephone", 18);
+    Participant p1(17, "name", "telephone", 18);
 //    Invitation i1("response, accepted, declined", "plus one -> bool");
     Organizer o1("name");
 

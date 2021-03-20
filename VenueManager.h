@@ -5,18 +5,20 @@
 #ifndef POO_PROIECT_VENUEMANAGER_H
 #define POO_PROIECT_VENUEMANAGER_H
 
+#include <memory>
 #include <iostream>
 #include <string>
 #include <vector>
 #include <unordered_set>
+#include <unordered_map>
 #include "Venue.h"
 
-class VenueManager {
+class VenueManager: public std::enable_shared_from_this<Venue>{
 private:
     std::string name;
     std::vector<Venue> venues;
-//    std::unordered_map<Venue, std::unordered_set<std::string>> UnavailableDates;
-//    std::unordered_map<int, std::vector<Venue>> capacities;
+    std::unordered_map<std::shared_ptr<Venue>, std::unordered_set<std::string>> UnavailableDates;
+    std::unordered_map<int, std::vector<std::shared_ptr<Venue>>> capacities;
 
 public:
     explicit VenueManager(std::string _name);
@@ -25,7 +27,7 @@ public:
     std::vector<Venue> getVenues();
 //    std::string generateVenue(int capacity, std::string date );
     void addVenue(const Venue &venue);
-//    void addUnavailableDate(const Venue &venue, std::string &date);
+    void addUnavailableDate(const Venue &venue, std::string &date);
     friend std::ostream &operator<<(std::ostream &os, const VenueManager &venueManager);
     virtual ~VenueManager();
 

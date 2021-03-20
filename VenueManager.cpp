@@ -33,9 +33,9 @@ void VenueManager::addVenue(const Venue &venue) {
 
 }
 
-//void VenueManager::addUnavailableDate(const Venue &venue, std::string &date) {
-//    UnavailableDates[venue].insert(date);
-//}
+void VenueManager::addUnavailableDate(const Venue &venue, std::string &date) {
+    UnavailableDates[shared_from_this()].insert(date);
+}
 
 VenueManager::~VenueManager() {
     std::cout << "destructor VenueManager" + name + "\n";

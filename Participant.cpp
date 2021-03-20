@@ -7,7 +7,7 @@
 #include <utility>
 
 
-Participant::Participant(std::string _name, std::string _telephone, int _age): name(std::move(_name)), telephone(std::move(_telephone)), age(_age) {}
+Participant::Participant(int _id, std::string _name, std::string _telephone, int _age): id(_id), name(std::move(_name)), telephone(std::move(_telephone)), age(_age) {}
 
 void Participant::setName(const std::string &_name) {
     name = _name;
