@@ -1,13 +1,13 @@
 #include <iostream>
 #include "Venue.h"
 #include "VenueManager.h"
-#include "Event.h"
-#include "EventManager.h"
+//#include "Event.h"
+//#include "EventManager.h"
 #include "Participant.h"
 #include "Invitation.h"
-#include "Organizator.h"
+#include "Organizer.h"
 #include "VenueManager.h"
-#include <chrono>
+//#include <chrono>
 
 using namespace std;
 
@@ -23,11 +23,13 @@ int main(){
     operator<<(std::cout, vm1);
 
 //    std::cout<<v1<<v2;
-//    Event e1("name", "date", Venue::Venue(v1));
+    Event e1("nunta", "20/03/2021", v1);
 //    EventManager em1("name");
-//    Participant p1("name", "telephone", 12);
+    Participant p1("name", "telephone", 18);
 //    Invitation i1("response, accepted, declined", "plus one -> bool");
-//    Organizator o1("name");
+    Organizer o1("name");
+
+    operator<<(std::cout, e1);
 
 
 //    constexpr auto ymd {std::chrono::July/1/2021};

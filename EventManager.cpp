@@ -3,11 +3,16 @@
 //
 
 #include <iostream>
+#include <utility>
 #include "EventManager.h"
 
-EventManager::EventManager(const std::string &name): name(name) {}
+EventManager::EventManager(std::string _name): name(std::move(_name)) {}
 
-std::string EventManager::getName() {
+void EventManager::setName(const std::string &_name) {
+    name = _name;
+}
+
+std::string EventManager::getName()const {
     return name;
 }
 
@@ -20,3 +25,8 @@ EventManager::~EventManager() {
     std::cout<<"destructor EventManager " + name + "\n";
 
 }
+
+
+
+
+

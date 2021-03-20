@@ -14,8 +14,9 @@ private:
     std::string name;
 
 public:
-    explicit EventManager(const std::string &name);
-    std::string getName();
+    explicit EventManager(std::string _name);
+    void setName(const std::string &_name);
+    std::string getName()const;
     friend std::ostream &operator<<(std::ostream &os, const EventManager &eventManager);
     virtual ~EventManager();
 };

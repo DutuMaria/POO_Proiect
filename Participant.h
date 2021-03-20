@@ -14,13 +14,16 @@ class Participant {
 private:
     std::string name, telephone;
     int age;
-    std::vector<Event> evenimente;
+    std::vector<Event> events;
 
 public:
-    Participant(const std::string &name, const std::string &telephone, int age);
-    std::string getName();
-    std::string getTelephone();
-    int getAge();
+    Participant(std::string _name, std::string _telephone, int _age);
+    void setName(const std::string &_name);
+    void setTelephone(const std::string &_telephone);
+    void setAge(int _age);
+    std::string getName()const;
+    std::string getTelephone()const;
+    int getAge()const;
     friend std::ostream &operator<<(std::ostream &os, const Participant &participant);
     virtual ~Participant();
 

@@ -4,18 +4,32 @@
 
 #include "Participant.h"
 #include <iostream>
+#include <utility>
 
-Participant::Participant(const std::string &name, const std::string &telephone, int age): name(name), age(age), telephone(telephone) {}
 
-std::string Participant::getName() {
+Participant::Participant(std::string _name, std::string _telephone, int _age): name(std::move(_name)), telephone(std::move(_telephone)), age(_age) {}
+
+void Participant::setName(const std::string &_name) {
+    name = _name;
+}
+
+void Participant::setTelephone(const std::string &_telephone) {
+    telephone = _telephone;
+}
+
+void Participant::setAge(int _age) {
+    age = _age;
+}
+
+std::string Participant::getName()const {
     return name;
 }
 
-std::string Participant::getTelephone() {
+std::string Participant::getTelephone()const {
     return telephone;
 }
 
-int Participant::getAge() {
+int Participant::getAge()const {
     return age;
 }
 
@@ -27,6 +41,11 @@ std::ostream &operator<<(std::ostream &os, const Participant &participant) {
 Participant::~Participant() {
 
 }
+
+
+
+
+
 
 
 

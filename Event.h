@@ -12,14 +12,17 @@
 class Event {
 private:
     std::string name, date;
-    Venue x;
+    Venue venue;
 
 public:
     // constructor
-    Event(const std::string &name, const std::string &date, const Venue &x);
+    Event(std::string _name, std::string _date, const Venue &_venue);
     friend std::ostream &operator<<(std::ostream &os, const Event &event);
-    std::string getName();
-    std::string getDate();
+    void setName(const std::string &_name);
+    void setDate(const std::string &_date);
+    void setVenue(const Venue &_venue);
+    std::string getName()const;
+    std::string getDate()const;
 
 
 };

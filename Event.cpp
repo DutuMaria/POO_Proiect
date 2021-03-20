@@ -3,22 +3,43 @@
 //
 
 #include <iostream>
+#include <utility>
 #include "Event.h"
 
 
-//Event::Event(const std::string &name, const std::string &date, const Venue &x) {
+Event::Event(std::string _name, std::string _date, const Venue &_venue): name(std::move(_name)), date(std::move(_date)),venue(_venue){}
 
-//}
+void Event::setName(const std::string &_name) {
+    name = _name;
+}
 
-std::string Event::getName() {
+void Event::setDate(const std::string &_date) {
+    date = _date;
+}
+
+void Event::setVenue(const Venue &_venue) {
+    venue = _venue;
+
+}
+
+std::string Event::getName()const {
     return name;
 }
 
-std::string Event::getDate() {
+std::string Event::getDate()const {
     return std::string();
 }
 
-//std::ostream &operator<<(std::ostream &os, const Event &event) {
-//    os<< "nume: "<<event.name<<" "<<event.date<<" "<<event.Venue<<"\n";  // cum afisez si obiectul de tip Venue asociat Event-ului?
-//    return os;
-//}
+
+std::ostream &operator<<(std::ostream &os, const Event &event) {
+    os<< "event: "<<event.name<<" "<<event.date<<"\n"<<"\t"<<event.venue<<"\n";
+    return os;
+}
+
+
+
+
+
+
+
+

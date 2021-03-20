@@ -4,23 +4,36 @@
 
 #include "Venue.h"
 #include <iostream>
+#include <utility>
 
 
-Venue::Venue(const std::string &name, const std::string &location, int capacity): name(name), location(location), capacity(capacity){}
+Venue::Venue(std::string _name, std::string _location, int _capacity): name(std::move(_name)), location(std::move(_location)), capacity(_capacity){}
 
 Venue::Venue(const Venue &ob): name(ob.name), location(ob.location),  capacity(ob.capacity){
     std::cout<<"cc Venue " + name + "\n";
 }
 
-std::string Venue::getName() {
+void Venue::setName(const std::string &_name) {
+    name = _name;
+}
+
+void Venue::setLocation(const std::string &_location) {
+    location = _location;
+}
+
+void Venue::setCapacity(int _capacity) {
+    capacity = _capacity;
+}
+
+std::string Venue::getName()const {
     return name;
 }
 
-std::string Venue::getLocation() {
+std::string Venue::getLocation()const {
     return location;
 }
 
-int Venue::getCapacity() {
+int Venue::getCapacity()const {
     return capacity;
 }
 
@@ -35,7 +48,7 @@ Venue &Venue::operator=(const Venue &venue) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Venue &venue) {
-    os << "name: " << venue.name << ", location: " <<venue.location<<", capacity: "<<venue.capacity<<"\n";
+    os << "venue: " << venue.name << ", location: " <<venue.location<<", capacity: "<<venue.capacity<<"\n";
     return os;
 }
 
@@ -44,6 +57,10 @@ Venue::~Venue() {
     std::cout << "destructor Venue " + name + "\n";
 
 }
+
+
+
+
 
 
 
