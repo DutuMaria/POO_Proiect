@@ -13,7 +13,7 @@ std::vector<std::shared_ptr<Venue>> VenueManager::getVenues() {
 std::ostream &operator<<(std::ostream &os, const VenueManager &venueManager) {
     os<<"venues:\n";
     for(auto &venue: venueManager.venues)
-        os<<"\t"<<venue->getName()<<", "<<venue->getCapacity()<<", "<<venue->getLocation()<<"\n";
+        os<<"\tName: "<<venue->getName()<<", capacity: "<<venue->getCapacity()<<", address: "<<venue->getLocation()<<"\n";
     os<<"\n";
     return os;
 }

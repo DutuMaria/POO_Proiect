@@ -9,7 +9,7 @@
 
 Venue::Venue(std::string _name, std::string _location, int _capacity): name(std::move(_name)), location(std::move(_location)), capacity(_capacity){}
 
-Venue::Venue(const Venue &_venue): name(_venue.name), location(_venue.location),  capacity(_venue.capacity){
+Venue::Venue(std::shared_ptr<Venue> &_venue): name(_venue->name), location(_venue->location),  capacity(_venue->capacity){
     std::cout<<"cc Venue " + name + "\n";
 }
 
@@ -37,11 +37,11 @@ int Venue::getCapacity()const {
     return capacity;
 }
 
-Venue &Venue::operator=(const Venue &venue) {
-    if(this != &venue) {
-        name = venue.name;
-        location = venue.location;
-        capacity = venue.capacity;
+Venue &Venue::operator=(std::shared_ptr<Venue> &venue) {
+    if(shared_from_this() != venue) {
+        name = venue->name;
+        location = venue->location;
+        capacity = venue->capacity;
     }
     std::cout<<"op= venue "<<name<<"\n";
     return *this;

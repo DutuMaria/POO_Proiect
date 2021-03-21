@@ -31,7 +31,6 @@ public:
     }
 
     std::vector<std::shared_ptr<Venue>> getVenues();
-//    std::string generateVenue(int capacity, std::string date );
     void addVenue(std::shared_ptr<Venue> &venue);
     void addUnavailableDate(std::shared_ptr<Venue>& venue, const std::string &date);
     friend std::ostream &operator<<(std::ostream &os, const VenueManager &venueManager);
