@@ -7,16 +7,27 @@
 
 #include <ostream>
 #include <string>
+#include "Event.h"
 
 
 class EventManager {
 private:
-    std::string name;
+//    std::string name;
+    EventManager(){};
+    EventManager(EventManager const&);
+    void operator=(EventManager const&);
+
+    std::vector<Event> events;
 
 public:
-    explicit EventManager(std::string _name);
-    void setName(const std::string &_name);
-    std::string getName()const;
+    static EventManager& getInstance(){
+        static EventManager instance;
+        return instance;
+    }
+//    explicit EventManager(std::string _name);
+//    void setName(const std::string &_name);
+//    std::string getName()const;
+    void addEvent(const Event &event);
     friend std::ostream &operator<<(std::ostream &os, const EventManager &eventManager);
     virtual ~EventManager();
 };

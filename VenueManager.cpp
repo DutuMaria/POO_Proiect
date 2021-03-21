@@ -6,22 +6,22 @@
 #include <iostream>
 #include <utility>
 
-VenueManager::VenueManager(std::string _name): name(std::move(_name)){}
-
-void VenueManager::setName(const std::string &_name) {
-    name = _name;
-}
-
-std::string VenueManager::getName()const {
-    return name;
-}
+//VenueManager::VenueManager(std::string _name): name(std::move(_name)){}
+//
+//void VenueManager::setName(const std::string &_name) {
+//    name = _name;
+//}
+//
+//std::string VenueManager::getName()const {
+//    return name;
+//}
 
 std::vector<Venue> VenueManager::getVenues() {
     return venues;
 }
 
 std::ostream &operator<<(std::ostream &os, const VenueManager &venueManager) {
-    os<<"\nname: "<<venueManager.name<<", venues:\n";
+    os<<"venues:\n";
     for(auto &venue: venueManager.venues)
         os<<"\t"<<venue;
     os<<"\n";
@@ -33,12 +33,12 @@ void VenueManager::addVenue(const Venue &venue) {
 
 }
 
-void VenueManager::addUnavailableDate(const Venue &venue, std::string &date) {
+void VenueManager::addUnavailableDate(const Venue &venue, const std::string &date) {
     UnavailableDates[shared_from_this()].insert(date);
 }
 
 VenueManager::~VenueManager() {
-    std::cout << "destructor VenueManager" + name + "\n";
+    std::cout << "destructor VenueManager\n";
 }
 
 

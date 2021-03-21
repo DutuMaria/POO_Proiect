@@ -16,8 +16,5 @@ bool Invitation::plusOne(bool ok) {
     return false;
 }
 
-Invitation &Invitation::getInstance() {
-    static Invitation instance;
-    return instance;
-}
+
 

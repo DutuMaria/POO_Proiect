@@ -1,8 +1,8 @@
 #include <iostream>
 #include "Venue.h"
 #include "VenueManager.h"
-//#include "Event.h"
-//#include "EventManager.h"
+#include "Event.h"
+#include "EventManager.h"
 #include "Participant.h"
 #include "Invitation.h"
 #include "Organizer.h"
@@ -15,15 +15,23 @@ int main(){
     Venue v1("name1", "St. Soarelui, nr. 22", 500);
     Venue v2("name2", "St. Amurgului, nr.17", 1000);
     Venue v3("name3", "St. Morii, nr 19", 2000);
-    VenueManager vm1("name vm1");
-    vm1.addVenue(v1);
-    vm1.addVenue(v2);
-    vm1.addVenue(v3);
+    VenueManager::getInstance().addVenue(v1);
+    VenueManager::getInstance().addVenue(v2);
+    VenueManager::getInstance().addVenue(v3);
+    VenueManager::getInstance().addUnavailableDate(v1, "23/03/2021");
+    VenueManager::getInstance().addUnavailableDate(v2, "23/03/2021");
 //    operator<<(std::cout, v1);
-    operator<<(std::cout, vm1);
+    operator<<(std::cout, VenueManager::getInstance());
 
 //    std::cout<<v1<<v2;
     Event e1("nunta", "20/03/2021", v1);
+    Event e2("majorat", "25/03/2021", v2);
+    Event e3("nunta2", "22/07/2021",  v2);
+    EventManager::getInstance().addEvent(e1);
+    EventManager::getInstance().addEvent(e2);
+    EventManager::getInstance().addEvent(e3);
+    operator<<(std::cout, EventManager::getInstance());
+
 //    EventManager em1("name");
     Participant p1(17, "name", "telephone", 18);
 //    Invitation i1("response, accepted, declined", "plus one -> bool");

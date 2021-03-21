@@ -8,12 +8,9 @@
 #include <string>
 
 class Invitation {
-private:
-    Invitation()= default;;
 public:
-    static Invitation& getInstance();
-    std::string response(bool ok);
-    bool plusOne(bool ok);
+    static std::string response(bool ok);
+    static bool plusOne(bool ok);
 
 };
 

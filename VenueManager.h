@@ -15,19 +15,29 @@
 
 class VenueManager: public std::enable_shared_from_this<Venue>{
 private:
-    std::string name;
+    VenueManager(){};
+
+    VenueManager(VenueManager const&);
+
+    void operator=(VenueManager const&)const;
+
+//    std::string name;
     std::vector<Venue> venues;
     std::unordered_map<std::shared_ptr<Venue>, std::unordered_set<std::string>> UnavailableDates;
     std::unordered_map<int, std::vector<std::shared_ptr<Venue>>> capacities;
 
 public:
-    explicit VenueManager(std::string _name);
-    void setName(const std::string &_name);
-    std::string getName()const;
+    static VenueManager& getInstance(){
+        static VenueManager instance;
+        return instance;
+    }
+    //explicit VenueManager(std::string _name);
+    //void setName(const std::string &_name);
+    //std::string getName()const;
     std::vector<Venue> getVenues();
 //    std::string generateVenue(int capacity, std::string date );
     void addVenue(const Venue &venue);
-    void addUnavailableDate(const Venue &venue, std::string &date);
+    void addUnavailableDate(const Venue &venue, const std::string &date);
     friend std::ostream &operator<<(std::ostream &os, const VenueManager &venueManager);
     virtual ~VenueManager();
 
