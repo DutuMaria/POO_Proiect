@@ -12,22 +12,18 @@
 
 class EventManager {
 private:
-//    std::string name;
     EventManager(){};
     EventManager(EventManager const&);
     void operator=(EventManager const&);
 
-    std::vector<Event> events;
+    std::vector<std::shared_ptr<Event>> events;
 
 public:
     static EventManager& getInstance(){
         static EventManager instance;
         return instance;
     }
-//    explicit EventManager(std::string _name);
-//    void setName(const std::string &_name);
-//    std::string getName()const;
-    void addEvent(const Event &event);
+    void addEvent(std::shared_ptr<Event> &event);
     friend std::ostream &operator<<(std::ostream &os, const EventManager &eventManager);
     virtual ~EventManager();
 };

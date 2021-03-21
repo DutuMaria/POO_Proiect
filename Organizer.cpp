@@ -6,7 +6,8 @@
 #include <utility>
 #include "Organizer.h"
 
-Organizer::Organizer(std::string _name): name(std::move(_name)) {}
+
+Organizer::Organizer(std::string _name): name(std::move(_name))  {}
 
 void Organizer::setName(const std::string &_name) {
     name = _name;
@@ -16,9 +17,24 @@ std::string Organizer::getName()const {
     return name;
 }
 
+void Organizer::organizeEvent(std::shared_ptr<Event> &event) {
+    events.insert(event);
+}
+
 std::ostream &operator<<(std::ostream &os, const Organizer &organizer) {
-    os<<"name: "<<organizer.name<<"\n";
+    os<<organizer.name<<" organizeaza:"<<"\n";
+    for(auto &event: organizer.events)
+        os<<"\t"<<event->getName()<<"\n";
+    os<<"\n";
     return os;
 }
+
+Organizer::~Organizer() {
+
+}
+
+
+
+
 
 

@@ -6,24 +6,15 @@
 #include <utility>
 #include "EventManager.h"
 
-//EventManager::EventManager(std::string _name): name(std::move(_name)) {}
-//
-//void EventManager::setName(const std::string &_name) {
-//    name = _name;
-//}
-//
-//std::string EventManager::getName()const {
-//    return name;
-//}
 
-void EventManager::addEvent(const Event &event) {
+void EventManager::addEvent(std::shared_ptr<Event> &event) {
     events.push_back(event);
 }
 
 std::ostream &operator<<(std::ostream &os, const EventManager &eventManager) {
     os<<"events:\n";
     for(auto &event: eventManager.events)
-        os<<"\t"<<event;
+        os<<"\tEvenimentul "<<event->getName()<<" de pe "<<event->getDate()<<", are locatia: "<<event->getVenue()->getName()<<"\n";
     os<<"\n";
     return os;
 }

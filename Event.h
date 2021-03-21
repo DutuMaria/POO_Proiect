@@ -8,21 +8,28 @@
 #include <ostream>
 #include <string>
 #include "Venue.h"
+//#include "Organizer.h"
+
+class Organizer;
 
 class Event {
 private:
     std::string name, date;
-    Venue venue;
+    std::shared_ptr<Venue> venue;
+//    Organizer organizer;
 
 public:
-    // constructor
-    Event(std::string _name, std::string _date, const Venue &_venue);
+//    Event(std::string _name, std::string _date, const Venue &_venue, const Organizer &_organizer);
+    Event(std::string _name, std::string _date, std::shared_ptr<Venue>  &_venue);
     friend std::ostream &operator<<(std::ostream &os, const Event &event);
     void setName(const std::string &_name);
     void setDate(const std::string &_date);
-    void setVenue(const Venue &_venue);
+    void setVenue(std::shared_ptr<Venue> &_venue);
+//    void setOrganizer(const Organizer &_organizer);
+//    Organizer getOrganizer(const Organizer &_organizer)const;
     std::string getName()const;
     std::string getDate()const;
+    std::shared_ptr<Venue> getVenue()const;
 
 
 };

@@ -20,7 +20,7 @@ private:
 
 public:
     Venue(std::string _name, std:: string _location, int _capacity);
-    Venue(const Venue &ob);
+    Venue(const Venue &_venue);
     void setName(const std::string &_name);
     void setLocation(const std::string &_location);
     void setCapacity(int _capacity);

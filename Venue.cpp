@@ -9,7 +9,7 @@
 
 Venue::Venue(std::string _name, std::string _location, int _capacity): name(std::move(_name)), location(std::move(_location)), capacity(_capacity){}
 
-Venue::Venue(const Venue &ob): name(ob.name), location(ob.location),  capacity(ob.capacity){
+Venue::Venue(const Venue &_venue): name(_venue.name), location(_venue.location),  capacity(_venue.capacity){
     std::cout<<"cc Venue " + name + "\n";
 }
 

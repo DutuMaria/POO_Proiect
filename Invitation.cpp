@@ -4,17 +4,20 @@
 
 #include "Invitation.h"
 
-std::string Invitation::response(bool ok) {
-    if(ok)
-        return "accepted\n";
-    return "declined\n";
-}
+Invitation::Invitation(int _id): id(_id) {}
 
-bool Invitation::plusOne(bool ok) {
-    if(ok)
-        return true;
-    return false;
-}
+//void Invitation::sendInvitationAndGetResponse(const Participant &participant, const Event &event) {
+//    response =  Participant::sendResponse(participant, event);
+//}
+//
+//
+//std::ostream &operator<<(std::ostream &os, const Invitation &invitation) {
+//    os<<Invitation::response<<"\n";
+//    return os;
+//}
 
+Invitation::~Invitation() {
+
+}
 
 

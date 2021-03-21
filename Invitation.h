@@ -6,11 +6,16 @@
 #define POO_PROIECT_INVITATION_H
 
 #include <string>
+#include "Participant.h"
 
 class Invitation {
+    int id;
+    static bool response;
 public:
-    static std::string response(bool ok);
-    static bool plusOne(bool ok);
+    Invitation(int _id);
+    //static void sendInvitationAndGetResponse(const Participant &participant, const Event &event);
+    //friend std::ostream &operator<<(std::ostream &os, const Invitation &invitation);
+    virtual ~Invitation();
 
 };
 
