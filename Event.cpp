@@ -6,8 +6,8 @@
 #include <utility>
 #include "Event.h"
 
-Event::Event(std::string _name, std::string _date, std::shared_ptr<Venue> &_venue): name(std::move(_name)), date(std::move(_date)), venue(_venue) {}
-//Event::Event(std::string _name, std::string _date, const Venue &_venue, const Organizer &_organizer): name(std::move(_name)), date(std::move(_date)),venue(_venue), organizer(std::move(_organizer)){}
+
+Event::Event(std::string _name, std::string _date, std::shared_ptr<Venue> &_venue): name(std::move(_name)), date(std::move(_date)), venue(_venue){}
 
 void Event::setName(const std::string &_name) {
     name = _name;
@@ -21,9 +21,9 @@ void Event::setVenue(std::shared_ptr<Venue> &_venue) {
     venue = _venue;
 }
 
-//void Event::setOrganizer(const Organizer &_organizer) {
-//    organizer = _organizer;
-//}
+void Event::setOrganizer(std::shared_ptr <Organizer> _organizer) {
+    organizer = std::move(_organizer);
+}
 
 std::string Event::getName()const {
     return name;
@@ -37,12 +37,12 @@ std::shared_ptr<Venue> Event::getVenue() const {
     return venue;
 }
 
-//Organizer Event::getOrganizer(const Organizer &_organizer) const {
-//    return _organizer;
-//}
+std::shared_ptr<Organizer> Event::getOrganizer()const {
+    return organizer;
+}
 
-std::ostream &operator<<(std::ostream &os, const Event &event) {
-    os<< "event: "<<event.name<<" "<<event.date<<"\n"<<"\t"<<event.venue<<"\n";
+std::ostream &operator<<(std::ostream &os, std::shared_ptr<Event> &event) {
+    os<< "event: "<<event->getName()<<" "<<event->getDate()<<"\n"<<"\t"<<event->getVenue()->getName()<<"\n";
     os<<"\n";
     return os;
 }

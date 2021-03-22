@@ -14,7 +14,7 @@ void EventManager::addEvent(std::shared_ptr<Event> &event) {
 std::ostream &operator<<(std::ostream &os, const EventManager &eventManager) {
     os<<"events:\n";
     for(auto &event: eventManager.events)
-        os<<"\tEvenimentul: "<<event->getName()<<" de pe "<<event->getDate()<<" are locatia: "<<event->getVenue()->getName()<<"\n";
+        os<<"\tEvenimentul: "<<event->getName()<<" de pe "<<event->getDate()<<" are locatia: "<<event->getVenue()->getName()<<" si este organizat de: "<<event->getOrganizer()->getName()<<"\n";
     os<<"\n";
     return os;
 }

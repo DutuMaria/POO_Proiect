@@ -38,24 +38,27 @@ int main(){
     VenueManager::getInstance().verifyVenue(e2);
     VenueManager::getInstance().verifyVenue(e3);
 
-    operator<<(std::cout, EventManager::getInstance());
+
 
     Participant p1(1, "Popescu Alin", "telephone1", 18);
     Participant p2(2, "Burducea Maria", "telephone2", 24);
     Participant p3(3, "Constantinescu Cristina", "telephone3", 30);
 
-    Organizer o1("Popescu Daniel");
-    Organizer o2("Irimia Alina");
-    o1.organizeEvent(e1);
-    o1.organizeEvent(e2);
-    o2.organizeEvent(e3);
+    shared_ptr<Organizer> o1 = std::make_shared<Organizer>("Popescu Daniel");
+    shared_ptr<Organizer> o2 = std::make_shared<Organizer>("Irimia Alina");
+    o1->organizeEvent(e1);
+    o1->organizeEvent(e2);
+    o2->organizeEvent(e3);
+    o2->organizeEvent(e4);
     operator<<(std::cout, o1);
     operator<<(std::cout, o2);
+
+    operator<<(std::cout, EventManager::getInstance());
+
+
     Invitation i1(17);
 //    Invitation::sendInvitationAndGetResponse(p1, e1);
 //    operator<<(std::cout, i1);
-
-
 
 
 //    constexpr auto ymd {std::chrono::July/1/2021};

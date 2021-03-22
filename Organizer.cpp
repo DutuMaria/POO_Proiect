@@ -19,11 +19,12 @@ std::string Organizer::getName()const {
 
 void Organizer::organizeEvent(std::shared_ptr<Event> &event) {
     events.insert(event);
+    event->setOrganizer(shared_from_this());
 }
 
-std::ostream &operator<<(std::ostream &os, const Organizer &organizer) {
-    os<<organizer.name<<" organizeaza:"<<"\n";
-    for(auto &event: organizer.events)
+std::ostream &operator<<(std::ostream &os, std::shared_ptr <Organizer> &organizer) {
+    os<<organizer->name<<" organizeaza:"<<"\n";
+    for(auto &event: organizer->events)
         os<<"\t"<<event->getName()<<"\n";
     os<<"\n";
     return os;

@@ -11,9 +11,9 @@
 #include "Event.h"
 #include <optional>
 
+class Event;
 
-
-class Organizer: public std::enable_shared_from_this<Venue> {
+class Organizer:  public std::enable_shared_from_this<Organizer> {
 private:
     std::string name;
     std::unordered_set<std::shared_ptr<Event>> events;
@@ -23,7 +23,7 @@ public:
     void setName(const std::string &_name);
     void organizeEvent(std::shared_ptr<Event> &event);
     std::string getName()const;
-    friend std::ostream &operator<<(std::ostream &os, const Organizer &organizer);
+    friend std::ostream &operator<<(std::ostream &os, std::shared_ptr <Organizer> &organizer);
     virtual ~Organizer();
 };
 
