@@ -11,11 +11,6 @@ void EventManager::addEvent(std::shared_ptr<Event> &event) {
     events.push_back(event);
 }
 
-bool EventManager::verifyVenue(std::shared_ptr<Venue> &venue) {
-
-    return false;
-}
-
 std::ostream &operator<<(std::ostream &os, const EventManager &eventManager) {
     os<<"events:\n";
     for(auto &event: eventManager.events)

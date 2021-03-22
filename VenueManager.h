@@ -10,11 +10,11 @@
 #include <string>
 #include <vector>
 #include <unordered_set>
-#include <set>
 #include <unordered_map>
 #include "Venue.h"
+#include "Event.h"
 
-class VenueManager: public std::enable_shared_from_this<Venue>{
+class VenueManager: public std::enable_shared_from_this<Venue>, public std::enable_shared_from_this<Event>{
 private:
     VenueManager(){};
     VenueManager(VenueManager const&);
@@ -22,7 +22,6 @@ private:
 
     std::vector<std::shared_ptr<Venue>> venues;
     std::unordered_map<std::shared_ptr<Venue>, std::unordered_set<std::string>> UnavailableDates;
-    std::set<std::pair<int, std::shared_ptr<Venue>>> venuesCapacities;
 
 public:
     static VenueManager& getInstance(){
@@ -33,9 +32,10 @@ public:
     std::vector<std::shared_ptr<Venue>> getVenues();
     void addVenue(std::shared_ptr<Venue> &venue);
     void addUnavailableDate(std::shared_ptr<Venue>& venue, const std::string &date);
+    void verifyVenue(std::shared_ptr<Event> &_event);
+    void changeVenue(std::shared_ptr<Event> &_event);
     friend std::ostream &operator<<(std::ostream &os, const VenueManager &venueManager);
     virtual ~VenueManager();
-
 
 };
 

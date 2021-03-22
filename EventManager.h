@@ -9,6 +9,7 @@
 #include <string>
 #include "Event.h"
 #include "VenueManager.h"
+#include "VenueManager.h"
 
 
 class EventManager {
@@ -25,7 +26,6 @@ public:
         return instance;
     }
     void addEvent(std::shared_ptr<Event> &event);
-    bool verifyVenue(std::shared_ptr<Venue> &_venue);
     friend std::ostream &operator<<(std::ostream &os, const EventManager &eventManager);
     virtual ~EventManager();
 };
