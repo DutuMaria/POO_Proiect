@@ -52,7 +52,7 @@ std::ostream &operator<<(std::ostream &os, const Participant &participant) {
 }
 
 Participant::~Participant() {
-
+    std::cout << "destructor Participant " + name + "\n";
 }
 
 

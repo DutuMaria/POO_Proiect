@@ -12,7 +12,7 @@
 
 class Organizer;
 
-class Event: public std::enable_shared_from_this<Venue>, public std::enable_shared_from_this<Event> {
+class Event:  public std::enable_shared_from_this<Event> {
 private:
     std::string name, date;
     std::shared_ptr<Venue> venue;

@@ -14,7 +14,7 @@
 #include "Venue.h"
 #include "Event.h"
 
-class VenueManager: public std::enable_shared_from_this<Venue>, public std::enable_shared_from_this<Event>{
+class VenueManager {
 private:
     VenueManager(){};
     VenueManager(VenueManager const&);

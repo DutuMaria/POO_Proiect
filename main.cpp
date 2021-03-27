@@ -37,6 +37,7 @@ int main(){
     VenueManager::getInstance().verifyVenue(e1);
     VenueManager::getInstance().verifyVenue(e2);
     VenueManager::getInstance().verifyVenue(e3);
+    VenueManager::getInstance().verifyVenue(e4);
 
 
 
