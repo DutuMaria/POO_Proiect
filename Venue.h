@@ -15,7 +15,6 @@
 class Venue: public std::enable_shared_from_this<Venue>{
 private:
     std::string name, location;
-    int capacity;
 
 public:
     Venue(std::string _name, std:: string _location);
