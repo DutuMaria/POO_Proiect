@@ -18,7 +18,9 @@ int main(){
     VenueManager::getInstance().addVenue(v1);
     VenueManager::getInstance().addVenue(v2);
     VenueManager::getInstance().addVenue(v3);
-    operator<<(std::cout, VenueManager::getInstance());
+
+    cout<<VenueManager::getInstance();
+
 
     VenueManager::getInstance().addUnavailableDate(v1, "23/03/2021");
     VenueManager::getInstance().addUnavailableDate(v2, "20/03/2021");
@@ -51,28 +53,18 @@ int main(){
     o1->organizeEvent(e2);
     o2->organizeEvent(e3);
     o2->organizeEvent(e4);
-    operator<<(std::cout, o1);
-    operator<<(std::cout, o2);
 
-    operator<<(std::cout, EventManager::getInstance());
+    cout<<o1;
+    cout<<o2;
+
+    cout<<EventManager::getInstance();
 
 
     Invitation i1(17);
 //    Invitation::sendInvitationAndGetResponse(p1, e1);
-//    operator<<(std::cout, i1);
+//    cout<<i1
 
 
-//    constexpr auto ymd {std::chrono::July/1/2021};
-//    std::cout << (ymd.year() == std::chrono::year(2021)) << ' ';
-//    std::cout << (ymd.month() == std::chrono::month(7)) << ' ';
-//    std::cout << (ymd.day() == std::chrono::day(1)) << '\n';
-
-//    template< class CharT, class Traits >
-//    std::basic_ostream<CharT, Traits>&
-//    operator<<(std::basic_ostream<CharT, Traits>& os, const std::chrono::year_month_day& ymd);
-//    return os << (ymd.ok() ?
-//                  std::format(os.getloc(), STATICALLY_WIDEN<CharT>("{:%F}"), ymd) :
-//                  std::format(os.getloc(), STATICALLY_WIDEN<CharT>("{:%F} is not a valid date"), ymd));
 
     return 0;
 }
