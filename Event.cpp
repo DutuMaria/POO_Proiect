@@ -21,7 +21,7 @@ void Event::setVenue(std::shared_ptr<Venue> &_venue) {
     venue = _venue;
 }
 
-void Event::setOrganizer(std::shared_ptr <Organizer> _organizer) {
+void Event::setOrganizer(std::weak_ptr <Organizer> _organizer) {
     organizer = std::move(_organizer);
 }
 
@@ -37,7 +37,7 @@ std::shared_ptr<Venue> Event::getVenue() const {
     return venue;
 }
 
-std::shared_ptr<Organizer> Event::getOrganizer()const {
+std::weak_ptr<Organizer> Event::getOrganizer()const {
     return organizer;
 }
 
