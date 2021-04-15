@@ -9,7 +9,7 @@
 
 Venue::Venue(std::string _name, std::string _location): name(std::move(_name)), location(std::move(_location)){}
 
-Venue::Venue(std::shared_ptr<Venue> &_venue): name(_venue->name), location(_venue->location){
+Venue::Venue(const std::shared_ptr<Venue> &_venue): name(_venue->name), location(_venue->location){
     std::cout<<"cc Venue " + name + "\n";
 }
 
@@ -29,7 +29,7 @@ std::string Venue::getLocation()const {
     return location;
 }
 
-Venue &Venue::operator=(std::shared_ptr<Venue> &venue) {
+Venue &Venue::operator=(const std::shared_ptr<Venue> &venue) {
     if(shared_from_this() != venue) {
         name = venue->name;
         location = venue->location;

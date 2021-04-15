@@ -5,6 +5,7 @@
 #ifndef POO_PROIECT_EVENT_H
 #define POO_PROIECT_EVENT_H
 
+#include <memory>
 #include <ostream>
 #include <string>
 #include "Venue.h"

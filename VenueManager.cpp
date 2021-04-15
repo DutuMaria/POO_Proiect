@@ -7,22 +7,22 @@
 #include <utility>
 
 std::vector<std::shared_ptr<Venue>> VenueManager::getVenues() {
-    return venues;
+    return elements;
 }
 
 std::ostream &operator<<(std::ostream &os, const VenueManager &venueManager) {
-    os<<"venues:\n";
-    for(auto &venue: venueManager.venues)
+    os<<"Venues:\n";
+    for(auto &venue: venueManager.elements)
         os<<"\tName: "<<venue->getName()<<", address: "<<venue->getLocation()<<"\n";
     os<<"\n";
     return os;
 }
 
-void VenueManager::addVenue(std::shared_ptr<Venue> &venue) {
-    venues.push_back(venue);
+void VenueManager::addVenue(const std::shared_ptr<Venue> &venue) {
+    elements.push_back(venue);
 }
 
-void VenueManager::addUnavailableDate(std::shared_ptr<Venue> &venue, const std::string &date) {
+void VenueManager::addUnavailableDate(const std::shared_ptr<Venue> &venue, const std::string &date) {
     UnavailableDates[venue].insert(date);
 }
 
@@ -31,10 +31,10 @@ void VenueManager::verifyVenue(std::shared_ptr<Event> &_event) {
        changeVenue(_event);  //  este indisponibila, deci trebuie schimbata
 }
 void VenueManager::changeVenue(std::shared_ptr<Event> &_event) {
-       for (auto & UnavailableDate : UnavailableDates){
-           if(UnavailableDates[UnavailableDate.first].find(_event->getDate()) == UnavailableDates[UnavailableDate.first].end())
-               _event->setVenue(const_cast<std::shared_ptr <Venue> &>(UnavailableDate.first));
-                addUnavailableDate(const_cast<std::shared_ptr <Venue> &>(UnavailableDate.first), _event->getDate()); //seteaza data ca indisponibila
+    for (auto & [venue, dates] : UnavailableDates){
+           if(UnavailableDates[venue].find(_event->getDate()) == UnavailableDates[venue].end())
+               _event->setVenue(const_cast<std::shared_ptr <Venue> &>(venue));
+                addUnavailableDate(const_cast<std::shared_ptr <Venue> &>(venue), _event->getDate()); //seteaza data ca indisponibila
            break;
        }
 }

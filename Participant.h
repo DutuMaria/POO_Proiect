@@ -13,9 +13,9 @@
 class Participant {
 private:
     std::string name, telephone;
-    static std::string response;
+    std::string response;
     int id, age;
-//    std::vector<Event> events;
+//    std::vector<Event> elements;
 
 public:
     Participant(int _id, std::string  _name, std::string  _telephone, int _age, std::string& _response = (std::string &) "pending");

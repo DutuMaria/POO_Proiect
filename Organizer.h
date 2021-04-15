@@ -5,6 +5,7 @@
 #ifndef POO_PROIECT_ORGANIZER_H
 #define POO_PROIECT_ORGANIZER_H
 
+#include <memory>
 #include <ostream>
 #include <string>
 #include <unordered_set>

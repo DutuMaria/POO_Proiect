@@ -5,10 +5,10 @@
 #ifndef POO_PROIECT_VENUE_H
 #define POO_PROIECT_VENUE_H
 
+#include <memory>
 #include <string>
 #include <vector>
 #include <ostream>
-//#include <chrono>
 #include <utility>
 
 
@@ -18,12 +18,12 @@ private:
 
 public:
     Venue(std::string _name, std:: string _location);
-    Venue(std::shared_ptr<Venue> &_venue);
+    Venue(const std::shared_ptr<Venue> &_venue);
     void setName(const std::string &_name);
     void setLocation(const std::string &_location);
     std::string getName()const;
     std::string getLocation()const;
-    Venue &operator=(std::shared_ptr<Venue> &_venue);
+    Venue &operator=(const std::shared_ptr<Venue> &_venue);
     friend std::ostream &operator<<(std::ostream &os, const Venue &venue);
     virtual ~Venue();
 

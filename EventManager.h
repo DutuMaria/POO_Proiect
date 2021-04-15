@@ -5,29 +5,20 @@
 #ifndef POO_PROIECT_EVENTMANAGER_H
 #define POO_PROIECT_EVENTMANAGER_H
 
-#include <ostream>
+#include <memory>
+#include <iostream>
+#include <vector>
 #include <string>
 #include "Event.h"
-#include "VenueManager.h"
-#include "VenueManager.h"
+#include "Manager.h"
 
-
-class EventManager {
-private:
-    EventManager(){};
-    EventManager(EventManager const&);
-    void operator=(EventManager const&);
-
-    std::vector<std::shared_ptr<Event>> events;
-
+class EventManager: public Manager<EventManager, Event> {
 public:
-    static EventManager& getInstance(){
-        static EventManager instance;
-        return instance;
-    }
-    void addEvent(std::shared_ptr<Event> &event);
+    std::vector<std::shared_ptr<Event>> getEvents();
+    void addEvent(const std::shared_ptr<Event> &event);
     friend std::ostream &operator<<(std::ostream &os, const EventManager &eventManager);
-    virtual ~EventManager();
+    ~EventManager() override;
+
 };
 
 

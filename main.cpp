@@ -6,7 +6,8 @@
 #include "Participant.h"
 #include "Invitation.h"
 #include "Organizer.h"
-//#include <chrono>
+#include "Manager.h"
+
 
 using namespace std;
 
@@ -15,31 +16,31 @@ int main(){
     shared_ptr<Venue> v2 = std::make_shared<Venue>("venue2", "St. Amurgului, nr.17");
     shared_ptr<Venue> v3 = std::make_shared<Venue>("venue3", "St. Morii, nr 19");
 
-    VenueManager::getInstance().addVenue(v1);
-    VenueManager::getInstance().addVenue(v2);
-    VenueManager::getInstance().addVenue(v3);
+    VenueManager::instance().addVenue(v1);
+    VenueManager::instance().addVenue(v2);
+    VenueManager::instance().addVenue(v3);
 
-    cout<<VenueManager::getInstance();
+    cout<<VenueManager::instance();
 
 
-    VenueManager::getInstance().addUnavailableDate(v1, "23/03/2021");
-    VenueManager::getInstance().addUnavailableDate(v2, "20/03/2021");
-    VenueManager::getInstance().addUnavailableDate(v3, "25/09/2021");
+    VenueManager::instance().addUnavailableDate(v1, "23/03/2021");
+    VenueManager::instance().addUnavailableDate(v2, "20/03/2021");
+    VenueManager::instance().addUnavailableDate(v3, "25/09/2021");
 
     shared_ptr<Event> e1 = std::make_shared<Event>("nunta1", "23/03/2021", v1);
     shared_ptr<Event> e2 = std::make_shared<Event>("nunta2", "22/07/2021", v2);
     shared_ptr<Event> e3 = std::make_shared<Event>("nunta3", "25/03/2021", v2);
     shared_ptr<Event> e4 = std::make_shared<Event>("nunta4", "20/04/2021", v3);
 
-    EventManager::getInstance().addEvent(e1);
-    EventManager::getInstance().addEvent(e2);
-    EventManager::getInstance().addEvent(e3);
-    EventManager::getInstance().addEvent(e4);
+    EventManager::instance().addEvent(e1);
+    EventManager::instance().addEvent(e2);
+    EventManager::instance().addEvent(e3);
+    EventManager::instance().addEvent(e4);
 
-    VenueManager::getInstance().verifyVenue(e1);
-    VenueManager::getInstance().verifyVenue(e2);
-    VenueManager::getInstance().verifyVenue(e3);
-    VenueManager::getInstance().verifyVenue(e4);
+    VenueManager::instance().verifyVenue(e1);
+    VenueManager::instance().verifyVenue(e2);
+    VenueManager::instance().verifyVenue(e3);
+    VenueManager::instance().verifyVenue(e4);
 
 
 
@@ -57,12 +58,11 @@ int main(){
     cout<<o1;
     cout<<o2;
 
-    cout<<EventManager::getInstance();
+    cout<<EventManager::instance();
 
 
     Invitation i1(17);
 //    Invitation::sendInvitationAndGetResponse(p1, e1);
-//    cout<<i1
 
 
 
