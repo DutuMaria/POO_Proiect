@@ -10,6 +10,7 @@
 #include <string>
 #include "Venue.h"
 #include "Organizer.h"
+#include <optional>
 
 class Organizer;
 
@@ -17,7 +18,7 @@ class Event:  public std::enable_shared_from_this<Event> {
 private:
     std::string name, date;
     std::shared_ptr<Venue> venue;
-    std::weak_ptr<Organizer> organizer;
+    std::optional<std::weak_ptr<Organizer>> organizer;
 
 public:
     Event(std::string _name, std::string _date, std::shared_ptr<Venue>  &_venue);
@@ -26,11 +27,11 @@ public:
     void setDate(const std::string &_date);
     void setVenue(std::shared_ptr<Venue> &_venue);
     void setOrganizer(std::weak_ptr <Organizer> _organizer);
-    std::weak_ptr<Organizer> getOrganizer()const;
+    std::optional<std::weak_ptr<Organizer>> getOrganizer()const;
     std::string getName()const;
     std::string getDate()const;
     std::shared_ptr<Venue> getVenue()const;
-
+    virtual ~Event();
 
 };
 

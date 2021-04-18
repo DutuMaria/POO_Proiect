@@ -10,7 +10,7 @@
 
 class Invitation {
     int id;
-    static bool response;
+    bool response;
 public:
     Invitation(int _id);
     //static void sendInvitationAndGetResponse(const Participant &participant, const Event &event);

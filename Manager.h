@@ -24,7 +24,8 @@ public:
         return instance;
     }
 
-   virtual ~Manager<M, T>();
+//    virtual
+    virtual ~Manager<M, T>();
 };
 
 template<typename M, typename T>

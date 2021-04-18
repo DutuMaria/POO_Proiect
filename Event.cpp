@@ -37,7 +37,7 @@ std::shared_ptr<Venue> Event::getVenue() const {
     return venue;
 }
 
-std::weak_ptr<Organizer> Event::getOrganizer()const {
+std::optional<std::weak_ptr<Organizer>> Event::getOrganizer()const {
     return organizer;
 }
 
@@ -45,6 +45,10 @@ std::ostream &operator<<(std::ostream &os, std::shared_ptr<Event> &event) {
     os<< "event: "<<event->getName()<<" "<<event->getDate()<<"\n"<<"\t"<<event->getVenue()->getName()<<"\n";
     os<<"\n";
     return os;
+}
+
+Event::~Event() {
+    std::cout << "destructor Event " + name + "\n";
 }
 
 

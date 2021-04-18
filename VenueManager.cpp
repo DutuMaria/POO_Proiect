@@ -4,6 +4,7 @@
 
 #include "VenueManager.h"
 #include <iostream>
+#include "all_venues_are_unavailable.h"
 #include <utility>
 
 std::vector<std::shared_ptr<Venue>> VenueManager::getVenues() {
@@ -31,12 +32,18 @@ void VenueManager::verifyVenue(std::shared_ptr<Event> &_event) {
        changeVenue(_event);  //  este indisponibila, deci trebuie schimbata
 }
 void VenueManager::changeVenue(std::shared_ptr<Event> &_event) {
+    bool changed = false;
     for (auto & [venue, dates] : UnavailableDates){
-           if(UnavailableDates[venue].find(_event->getDate()) == UnavailableDates[venue].end())
-               _event->setVenue(const_cast<std::shared_ptr <Venue> &>(venue));
-                addUnavailableDate(const_cast<std::shared_ptr <Venue> &>(venue), _event->getDate()); //seteaza data ca indisponibila
-           break;
+           if(UnavailableDates[venue].find(_event->getDate()) == UnavailableDates[venue].end()) {
+               _event->setVenue(const_cast<std::shared_ptr<Venue> &>(venue));
+               addUnavailableDate(const_cast<std::shared_ptr<Venue> &>(venue),_event->getDate()); //seteaza data ca indisponibil
+               changed = true;
+               break;
+           }
        }
+    if(!changed) {
+        throw all_venues_are_unavailable(_event, _event->getDate());
+    }
 }
 
 VenueManager::~VenueManager() {
