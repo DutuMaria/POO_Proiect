@@ -67,7 +67,7 @@ int main() {
     o1->organizeEvent(e1);
     o1->organizeEvent(e2);
     o2->organizeEvent(e3);
-//    o2->organizeEvent(e4); //   pot sa  setez organizatorul aici => am folosit optional in Event.h
+//    o2->organizeEvent(e4); //   pot sa nu setez organizatorul aici => am folosit optional in Event.h
     o2->organizeEvent(e5);
 
 
