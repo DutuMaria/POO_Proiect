@@ -35,7 +35,7 @@ int main() {
 
     shared_ptr<Event> e1 = std::make_shared<Event>("nunta1", "23/03/2021", v1);
     shared_ptr<Event> e2 = std::make_shared<Event>("nunta2", "22/07/2021", v2);
-    shared_ptr<Event> e3 = std::make_shared<Event>("nunta3", "25/03/2021", v2);
+    shared_ptr<Event> e3 = std::make_shared<Event>("nunta3", "22/07/2021", v2);   // o sa genereze alta locatie pt e3 pentru ca e la fel cu e2
     shared_ptr<Event> e4 = std::make_shared<Event>("nunta4", "20/04/2021", v3);
     shared_ptr<Event> e5 = std::make_shared<Event>("majorat", "05/06/2021", v3);
 
@@ -61,7 +61,7 @@ int main() {
     verificare_si_adaugare(e2);
     verificare_si_adaugare(e3);
     verificare_si_adaugare(e4);
-    verificare_si_adaugare(e5);
+    verificare_si_adaugare(e5); // pentru e5 intra pe catch pentru ca toate locatiile sunt ocupate pe data respectiva
 
 
     o1->organizeEvent(e1);

@@ -28,8 +28,12 @@ void VenueManager::addUnavailableDate(const std::shared_ptr<Venue> &venue, const
 }
 
 void VenueManager::verifyVenue(std::shared_ptr<Event> &_event) {
-    if(UnavailableDates[_event->getVenue()].find(_event->getDate()) != UnavailableDates[_event->getVenue()].end())
-       changeVenue(_event);  //  este indisponibila, deci trebuie schimbata
+    if(UnavailableDates[_event->getVenue()].find(_event->getDate()) != UnavailableDates[_event->getVenue()].end()) {
+        changeVenue(_event);  //  este indisponibila, deci trebuie schimbata
+    }
+    else{
+        addUnavailableDate(_event->getVenue(), _event->getDate());
+    }
 }
 void VenueManager::changeVenue(std::shared_ptr<Event> &_event) {
     bool changed = false;
