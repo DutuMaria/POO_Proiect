@@ -10,9 +10,14 @@
 #include <string>
 #include <unordered_set>
 #include "Event.h"
+#include "Participant.h"
+#include "Invitation.h"
+#include "Participant.h"
 #include <optional>
 
 class Event;
+class Participant;
+class Invitation;
 
 class Organizer:  public std::enable_shared_from_this<Organizer> {
 private:
@@ -23,6 +28,7 @@ public:
     explicit Organizer(std::string _name);
     void setName(const std::string &_name);
     void organizeEvent(std::shared_ptr<Event> &event);
+    void sendInvitation(const std::shared_ptr<Invitation> &invitation, const std::shared_ptr<Event> &event, const std::shared_ptr<Participant> &participant);
     std::string getName()const;
     friend std::ostream &operator<<(std::ostream &os, std::shared_ptr <Organizer> &organizer);
     virtual ~Organizer();

@@ -41,7 +41,12 @@ std::optional<std::weak_ptr<Organizer>> Event::getOrganizer()const {
     return organizer;
 }
 
-std::ostream &operator<<(std::ostream &os, std::shared_ptr<Event> &event) {
+//std::optional<std::vector<std::weak_ptr<Participant>>> Event::getParticipants() const {
+//    return participants;
+//}
+
+
+std::ostream &operator<<(std::ostream &os,const std::shared_ptr<Event> &event) {
     os<< "event: "<<event->getName()<<" "<<event->getDate()<<"\n"<<"\t"<<event->getVenue()->getName()<<"\n";
     os<<"\n";
     return os;

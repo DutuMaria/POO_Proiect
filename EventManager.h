@@ -16,6 +16,8 @@ class EventManager: public Manager<EventManager, Event> {
 public:
     std::vector<std::shared_ptr<Event>> getEvents();
     void addEvent(const std::shared_ptr<Event> &event);
+//    void addParticipant(const std::weak_ptr<Participant> &participant, const std::shared_ptr<Event> &event);
+//    int nrOfParticipants(const std::shared_ptr<Event> &event);
     friend std::ostream &operator<<(std::ostream &os, const EventManager &eventManager);
     ~EventManager() override;
 

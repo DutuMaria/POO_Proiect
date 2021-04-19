@@ -9,8 +9,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-//#include "VenueManager.h"
-//#include "EventManager.h"
 
 template<typename M, typename T> class Manager {
 
@@ -24,7 +22,7 @@ public:
         return instance;
     }
 
-//    virtual
+//    virtual  // trebuie sa fac o functie pur virtuala!
     virtual ~Manager<M, T>();
 };
 

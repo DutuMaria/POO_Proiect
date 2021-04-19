@@ -5,17 +5,22 @@
 #ifndef POO_PROIECT_PARTICIPANT_H
 #define POO_PROIECT_PARTICIPANT_H
 
+#include <memory>
 #include <iostream>
-#include <vector>
+#include <unordered_map>
 #include <string>
-//#include "Event.h"
+#include "Event.h"
+#include "Invitation.h"
 
-class Participant {
+class Event;
+class Invitation;
+
+class Participant: public std::enable_shared_from_this<Participant>{
 private:
     std::string name, telephone;
     std::string response;
     int id, age;
-//    std::vector<Event> elements;
+    std::unordered_map<std::string, std::shared_ptr<Event>>  EventsProgram;
 
 public:
     Participant(int _id, std::string  _name, std::string  _telephone, int _age, std::string& _response = (std::string &) "pending");
@@ -25,9 +30,9 @@ public:
     std::string getName()const;
     std::string getTelephone()const;
     int getAge()const;
-//    static bool sendResponse(const Participant &participant, const Event &event);
-//    static bool plusOne(bool ok);
-    friend std::ostream &operator<<(std::ostream &os, const Participant &participant);
+
+    void receiveInvitation_and_respond(const std::shared_ptr<Invitation> &invitation, const std::shared_ptr<Event> &event);
+    friend std::ostream &operator<<(std::ostream &os, const std::shared_ptr<Participant> &participant);
     virtual ~Participant();
 
 };

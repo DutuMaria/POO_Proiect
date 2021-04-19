@@ -32,11 +32,19 @@ std::ostream &operator<<(std::ostream &os, const EventManager &eventManager) {
     return os;
 }
 
+
+//void EventManager::addParticipant(const std::weak_ptr<Participant> &participant, const std::shared_ptr<Event> &event) {
+//    event->getParticipants()->push_back(participant);
+//}
+
+//int EventManager::nrOfParticipants(const std::shared_ptr<Event> &event) {
+//    return event->getParticipants()->size();
+//}
+
 EventManager::~EventManager() {
     std::cout<<"destructor EventManager\n";
 
 }
-
 
 
 

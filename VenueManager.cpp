@@ -27,6 +27,13 @@ void VenueManager::addUnavailableDate(const std::shared_ptr<Venue> &venue, const
     UnavailableDates[venue].insert(date);
 }
 
+// verifyVenue + changeVenue
+//Când creez un eveniment și văd ca se suprapune cu alt eveniment,
+// atunci încerc sa ii generez alta locație evenimentului respectiv
+// în funcție de data aleasa și  vreau doar în cazul în care
+// toate locațiile sunt indisponibile pe data respectiva sa arunc excepția.
+
+
 void VenueManager::verifyVenue(std::shared_ptr<Event> &_event) {
     if(UnavailableDates[_event->getVenue()].find(_event->getDate()) != UnavailableDates[_event->getVenue()].end()) {
         changeVenue(_event);  //  este indisponibila, deci trebuie schimbata
@@ -40,7 +47,7 @@ void VenueManager::changeVenue(std::shared_ptr<Event> &_event) {
     for (auto & [venue, dates] : UnavailableDates){
            if(UnavailableDates[venue].find(_event->getDate()) == UnavailableDates[venue].end()) {
                _event->setVenue(const_cast<std::shared_ptr<Venue> &>(venue));
-               addUnavailableDate(const_cast<std::shared_ptr<Venue> &>(venue),_event->getDate()); //seteaza data ca indisponibil
+               addUnavailableDate(const_cast<std::shared_ptr<Venue> &>(venue),_event->getDate()); //seteaza data ca indisponibila
                changed = true;
                break;
            }

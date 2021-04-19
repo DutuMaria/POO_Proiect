@@ -30,6 +30,11 @@ std::ostream &operator<<(std::ostream &os, std::shared_ptr <Organizer> &organize
     return os;
 }
 
+void
+Organizer::sendInvitation(const std::shared_ptr<Invitation> &invitation, const std::shared_ptr<Event> &event, const std::shared_ptr<Participant> &participant) {
+    participant->receiveInvitation_and_respond(invitation, event);
+}
+
 Organizer::~Organizer() {
 
 }
