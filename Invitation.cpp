@@ -6,9 +6,9 @@
 
 #include <utility>
 
-Invitation::Invitation(int _id): id(_id) {}
+Invitation::Invitation() {}
 
-//Invitation::Invitation(int _id, std::shared_ptr<Event> _event, std::shared_ptr<Participant> _participant): id(_id), event(std::move(_event)), participant(std::move(_participant)) {}
+//Invitation::Invitation(std::shared_ptr<Event> _event, std::shared_ptr<Participant> _participant): event(std::move(_event)), participant(std::move(_participant)) {}
 
 void Invitation::setResponse(bool _response) {
     response = _response;
@@ -22,30 +22,33 @@ void Invitation::setParticipant(std::shared_ptr<Participant> _participant) {
     participant = _participant;
 }
 
-std::shared_ptr<Event> Invitation::getEvent() const {
+std::optional<std::shared_ptr<Event>> Invitation::getEvent() const {
     return event;
 }
 
-std::shared_ptr<Participant> Invitation::getParticipant() const {
+std::optional<std::shared_ptr<Participant>> Invitation::getParticipant() const {
     return participant;
 }
 
-int Invitation::getId() const {
-    return id;
-}
 
-bool Invitation::getResponse() const {
+std::optional<bool> Invitation::getResponse() const {
     return response;
 }
 
 std::ostream &operator<<(std::ostream &os, const std::shared_ptr<Invitation> &invitation) {
-    if(invitation->getResponse()) {
-        os << "(Invitatia: " << invitation->getId() <<") "<< invitation->getParticipant()->getName()<< "  a acceptat invitatia la " <<invitation->getEvent()->getName()<< "\n";
+    if(invitation->getResponse().has_value()) {
+        if (invitation->getResponse()) {
+            os << invitation->getParticipant().value()->getName() << " a acceptat invitatia la "
+               << invitation->getEvent().value()->getName() << "\n";
+        }
+        else {
+            os << invitation->getParticipant().value()->getName() << " NU a acceptat invitatia la "
+               << invitation->getEvent().value()->getName() << "\n";
+        }
     }
     else{
-        os << "(Invitatia: " << invitation->getId() <<") "<< invitation->getParticipant()->getName()<< " NU a acceptat invitatia la " <<invitation->getEvent()->getName()<< "\n";
+        os<<"Invitatia nu a fost trimisa!"<<"\n";
     }
-
     return os;
 }
 

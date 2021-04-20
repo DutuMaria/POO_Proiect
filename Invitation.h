@@ -16,22 +16,19 @@ class Participant;
 class Event;
 
 class Invitation: public std::enable_shared_from_this<Invitation>  {
-    int id;
-    bool response;
-    std::shared_ptr<Event> event;
-    std::shared_ptr<Participant> participant;
+    std::optional<bool> response;
+    std::optional<std::shared_ptr<Event>> event;
+    std::optional<std::shared_ptr<Participant>> participant;
 
 public:
-    Invitation(int _id);
-//    Invitation(int _id, std::shared_ptr<Event> _event, std::shared_ptr<Participant> _participant);
+    Invitation();
+//    Invitation(std::shared_ptr<Event> _event, std::shared_ptr<Participant> _participant);
     void setResponse(bool _response);
     void setParticipant(std::shared_ptr<Participant> _participant);
     void setEvent(std::shared_ptr<Event> _event);
-    std::shared_ptr<Event> getEvent()const;
-    std::shared_ptr<Participant> getParticipant()const;
-    bool getResponse()const;
-    int getId()const;
-
+    std::optional<std::shared_ptr<Event>> getEvent() const;
+    std::optional<std::shared_ptr<Participant>> getParticipant() const;
+    std::optional<bool> getResponse()const;
     friend std::ostream &operator<<(std::ostream &os, const std::shared_ptr<Invitation> &invitation);
     virtual ~Invitation();
 

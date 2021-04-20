@@ -39,10 +39,10 @@ int main() {
     shared_ptr<Event> e4 = std::make_shared<Event>("nunta4", "20/04/2021", v3);
     shared_ptr<Event> e5 = std::make_shared<Event>("majorat", "05/06/2021", v3);
 
-    shared_ptr<Invitation> i1 = std::make_shared<Invitation>(1);
-    shared_ptr<Invitation> i2 = std::make_shared<Invitation>(2);
-    shared_ptr<Invitation> i3 = std::make_shared<Invitation>(3);
-    shared_ptr<Invitation> i4 = std::make_shared<Invitation>(4);
+    shared_ptr<Invitation> i1 = std::make_shared<Invitation>();
+    shared_ptr<Invitation> i2 = std::make_shared<Invitation>();
+    shared_ptr<Invitation> i3 = std::make_shared<Invitation>();
+    shared_ptr<Invitation> i4 = std::make_shared<Invitation>();
 
 
     VenueManager::instance().addVenue(v1);
@@ -70,7 +70,7 @@ int main() {
     o1->organizeEvent(e1);
     o1->organizeEvent(e2);
     o2->organizeEvent(e3);
-//    o2->organizeEvent(e4); //   pot sa nu setez organizatorul aici => am folosit optional in Event.h
+//    o2->organizeEvent(e4); //   pot sa nu setez organizatorul aici (afisez alt mesaj) => am folosit optional in Event.h
     o2->organizeEvent(e5);
 
 
@@ -80,6 +80,9 @@ int main() {
 
     cout << EventManager::instance(); // afisarea evenimentelor
 
+
+    cout<<i3<<"\n";   //   invitatia nu a fost trimisa (afisez alt mesaj) => am folosit optional in Invitation.h
+
     o1->sendInvitation(i1, e2, p1);
     o1->sendInvitation(i2, e3, p1);
     o1->sendInvitation(i3, e1, p1);
@@ -87,6 +90,8 @@ int main() {
 
     cout<<i1<<"\n"; // o sa accepte invitatia pentru ca p1 este liber pe data evenimentului
     cout<<i2<<"\n"; // NU o sa accepte invitatia pentru ca p1  nu este liber pe data evenimentului
+    cout<<i3<<"\n"; // o sa accepte invitatia pentru ca p1 este liber pe data evenimentului
+    cout<<i4<<"\n"; // o sa accepte invitatia pentru ca p1 este liber pe data evenimentului
 
     cout<<p1<<"\n"; // afiseaza evenimentele la care participa p1
 
