@@ -78,8 +78,6 @@ int main() {
     cout << o1;
     cout << o2;
 
-    cout << EventManager::instance(); // afisarea evenimentelor
-
 
     cout<<i3<<"\n";   //   invitatia nu a fost trimisa (afisez alt mesaj) => am folosit optional in Invitation.h
 
@@ -94,6 +92,21 @@ int main() {
     cout<<i4<<"\n"; // o sa accepte invitatia pentru ca p1 este liber pe data evenimentului
 
     cout<<p1<<"\n"; // afiseaza evenimentele la care participa p1
+
+//    EventManager::instance().addParticipant(p1, e1);
+//    cout<<EventManager::instance().nrOfParticipants(e1);
+
+    cout << EventManager::instance(); // afisarea evenimentelor
+
+//  mai trebuie facuta functie pur vitruala in Manager.h => suprascriere in EventManager si in VenueManager
+//  mai trebuie rezolvate functiile: addParticipant si nrOfParticipants in EventManager
+//                                  + schimbare afisare
+//                                  + modificare addParticipant in Participant.cpp
+//                                  + modificare in Event la vectorul de participanti
+
+
+
+
 
     return 0;
 }
