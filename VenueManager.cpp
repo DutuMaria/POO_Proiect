@@ -57,6 +57,12 @@ void VenueManager::changeVenue(std::shared_ptr<Event> &_event) {
     }
 }
 
+std::string VenueManager::status(const std::string &date, std::shared_ptr<Venue> &venue) {
+    if(UnavailableDates[venue].find(date) == UnavailableDates[venue].end())
+        return "Locatia " + venue->getName() + " este disponibila pe data: " + date + "!";
+    return "Locatia " + venue->getName() + " NU este disponibila pe data: " + date + "!";
+}
+
 VenueManager::~VenueManager() {
     std::cout << "destructor VenueManager\n";
 }

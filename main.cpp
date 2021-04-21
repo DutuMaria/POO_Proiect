@@ -96,7 +96,13 @@ int main() {
 //    EventManager::instance().addParticipant(p1, e1);
 //    cout<<EventManager::instance().nrOfParticipants(e1);
 
-    cout << EventManager::instance(); // afisarea evenimentelor
+    cout<<EventManager::instance().status("23/03/2021", e1)<<"\n";
+    cout<<EventManager::instance().status("24/03/2021", e1)<<"\n";
+    cout<<VenueManager::instance().status("23/03/2021", v1)<<"\n";
+    cout<<VenueManager::instance().status("24/03/2021", v1)<<"\n";
+
+
+    cout <<"\n"<< EventManager::instance(); // afisarea evenimentelor
 
 //  mai trebuie facuta functie pur vitruala in Manager.h => suprascriere in EventManager si in VenueManager
 //  mai trebuie rezolvate functiile: addParticipant si nrOfParticipants in EventManager

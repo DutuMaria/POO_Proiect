@@ -25,6 +25,7 @@ public:
     void addUnavailableDate(const std::shared_ptr<Venue>& venue, const std::string &date);
     void verifyVenue(std::shared_ptr<Event> &_event);
     void changeVenue(std::shared_ptr<Event> &_event);
+    std::string status(const std::string &date,  std::shared_ptr<Venue> &venue)  override ;
     friend std::ostream &operator<<(std::ostream &os, const VenueManager &venueManager);
     ~VenueManager() override;
 

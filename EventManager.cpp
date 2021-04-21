@@ -39,6 +39,12 @@ std::ostream &operator<<(std::ostream &os, const EventManager &eventManager) {
     return os;
 }
 
+std::string EventManager::status(const std::string &date, std::shared_ptr<Event> &event) {
+    if(date == event->getDate())
+        return "Evenimentul: " + event->getName() + " este in desfasurare!";
+    // trebuie sa mai implementez cazul in care evenimentul inca nu s-a desfasurat sau s-a terminat .. momentan pt cazurile astea spun ca nu este data evenimentului
+    return "Data: " + date + " nu este data evenimentului: " + event->getName() + "!";
+}
 
 //void EventManager::addParticipant(const std::weak_ptr<Participant> &participant, const std::shared_ptr<Event> &event) {
 //    event->getParticipants()->push_back(participant);
@@ -52,6 +58,8 @@ EventManager::~EventManager() {
     std::cout<<"destructor EventManager\n";
 
 }
+
+
 
 
 

@@ -22,7 +22,7 @@ public:
         return instance;
     }
 
-//    virtual  // trebuie sa fac o functie pur virtuala!
+    virtual  std::string status(const std::string &date, std::shared_ptr<T> &element) = 0;
     virtual ~Manager<M, T>();
 };
 
