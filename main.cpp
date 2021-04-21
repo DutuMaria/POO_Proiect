@@ -104,7 +104,7 @@ int main() {
 
     cout <<"\n"<< EventManager::instance(); // afisarea evenimentelor
 
-//  mai trebuie facuta functie pur vitruala in Manager.h => suprascriere in EventManager si in VenueManager
+//  in EventManager mai trebuie modificata putin functia status
 //  mai trebuie rezolvate functiile: addParticipant si nrOfParticipants in EventManager
 //                                  + schimbare afisare
 //                                  + modificare addParticipant in Participant.cpp
