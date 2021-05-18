@@ -41,9 +41,9 @@ std::optional<std::weak_ptr<Organizer>> Event::getOrganizer()const {
     return organizer;
 }
 
-//std::optional<std::vector<std::weak_ptr<Participant>>> Event::getParticipants() const {
-//    return participants;
-//}
+std::vector<std::weak_ptr<Participant>> Event::getParticipants() const {
+    return participants;
+}
 
 
 std::ostream &operator<<(std::ostream &os,const std::shared_ptr<Event> &event) {
@@ -54,6 +54,15 @@ std::ostream &operator<<(std::ostream &os,const std::shared_ptr<Event> &event) {
 
 Event::~Event() {
     std::cout << "destructor Event " + name + "\n";
+}
+
+void Event::addParticipant(const std::weak_ptr<Participant> &participant) {
+    participants.push_back(participant);
+    nrParticipants ++;
+}
+
+int Event::getNrParticipants() const {
+    return nrParticipants;
 }
 
 

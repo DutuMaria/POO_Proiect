@@ -17,8 +17,6 @@ public:
     std::vector<std::shared_ptr<Event>> getEvents();
     void addEvent(const std::shared_ptr<Event> &event);
     std::string status(const std::string &date,  std::shared_ptr<Event> &event) override;
-//    void addParticipant(const std::weak_ptr<Participant> &participant, const std::shared_ptr<Event> &event);
-//    int nrOfParticipants(const std::shared_ptr<Event> &event);
     friend std::ostream &operator<<(std::ostream &os, const EventManager &eventManager);
     ~EventManager() override;
 

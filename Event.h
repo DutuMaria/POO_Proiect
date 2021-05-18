@@ -22,7 +22,9 @@ private:
     std::string name, date;
     std::shared_ptr<Venue> venue;
     std::optional<std::weak_ptr<Organizer>> organizer;
-//    std::optional<std::vector<std::weak_ptr<Participant>>> participants;
+    std::vector<std::weak_ptr<Participant>> participants;
+    int nrParticipants = 0;
+
 
 public:
     Event(std::string _name, std::string _date, std::shared_ptr<Venue>  &_venue);
@@ -31,7 +33,9 @@ public:
     void setDate(const std::string &_date);
     void setVenue(std::shared_ptr<Venue> &_venue);
     void setOrganizer(std::weak_ptr <Organizer> _organizer);
-//    std::optional<std::vector<std::weak_ptr<Participant>>> getParticipants()const;
+    std::vector<std::weak_ptr<Participant>> getParticipants()const;
+    void addParticipant(const std::weak_ptr<Participant> &participant);
+    int getNrParticipants()const;
     std::optional<std::weak_ptr<Organizer>> getOrganizer()const;
     std::string getName()const;
     std::string getDate()const;

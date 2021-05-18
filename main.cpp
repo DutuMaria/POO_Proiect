@@ -43,6 +43,8 @@ int main() {
     shared_ptr<Invitation> i2 = std::make_shared<Invitation>();
     shared_ptr<Invitation> i3 = std::make_shared<Invitation>();
     shared_ptr<Invitation> i4 = std::make_shared<Invitation>();
+    shared_ptr<Invitation> i5 = std::make_shared<Invitation>();
+    shared_ptr<Invitation> i6 = std::make_shared<Invitation>();
 
 
     VenueManager::instance().addVenue(v1);
@@ -82,19 +84,17 @@ int main() {
     cout<<i3<<"\n";   //   invitatia nu a fost trimisa (afisez alt mesaj) => am folosit optional in Invitation.h
 
     o1->sendInvitation(i1, e2, p1);
-    o1->sendInvitation(i2, e3, p1);
+    o1->sendInvitation(i2, e2, p2);
     o1->sendInvitation(i3, e1, p1);
-    o1->sendInvitation(i4, e5, p1);
+    o1->sendInvitation(i4, e1, p2);
+    o1->sendInvitation(i5, e1, p3);
 
-    cout<<i1<<"\n"; // o sa accepte invitatia pentru ca p1 este liber pe data evenimentului
-    cout<<i2<<"\n"; // NU o sa accepte invitatia pentru ca p1  nu este liber pe data evenimentului
-    cout<<i3<<"\n"; // o sa accepte invitatia pentru ca p1 este liber pe data evenimentului
+    cout<<i1; // o sa accepte invitatia pentru ca p1 este liber pe data evenimentului
+    cout<<i2; // NU o sa accepte invitatia pentru ca p1  nu este liber pe data evenimentului
+    cout<<i3; // o sa accepte invitatia pentru ca p1 este liber pe data evenimentului
     cout<<i4<<"\n"; // o sa accepte invitatia pentru ca p1 este liber pe data evenimentului
 
     cout<<p1<<"\n"; // afiseaza evenimentele la care participa p1
-
-//    EventManager::instance().addParticipant(p1, e1);
-//    cout<<EventManager::instance().nrOfParticipants(e1);
 
     cout<<EventManager::instance().status("23/03/2021", e1)<<"\n";
     cout<<EventManager::instance().status("24/03/2021", e1)<<"\n";
@@ -103,15 +103,6 @@ int main() {
 
 
     cout <<"\n"<< EventManager::instance(); // afisarea evenimentelor
-
-//  in EventManager mai trebuie modificata putin functia status
-//  mai trebuie rezolvate functiile: addParticipant si nrOfParticipants in EventManager
-//                                  + schimbare afisare
-//                                  + modificare addParticipant in Participant.cpp
-//                                  + modificare in Event la vectorul de participanti
-
-
-
 
 
     return 0;

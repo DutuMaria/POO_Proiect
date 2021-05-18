@@ -6,6 +6,7 @@
 #include <iostream>
 #include <utility>
 #include "EventManager.h"
+#include <memory>
 
 
 Participant::Participant(int _id, std::string  _name, std::string  _telephone, int _age, std::string& _response): id(_id), name(std::move(_name)), telephone(std::move(_telephone)), age(_age) {}
@@ -43,7 +44,7 @@ void Participant::receiveInvitation_and_respond(const std::shared_ptr<Invitation
         EventsProgram.insert({event->getDate(), event});
 
         invitation->setResponse(true);
-//        EventManager::instance().addParticipant(shared_from_this(), event);
+        event->addParticipant(shared_from_this());
 
     }
     else{
