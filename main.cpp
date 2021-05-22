@@ -6,6 +6,7 @@
 #include "Participant.h"
 #include "Invitation.h"
 #include "Organizer.h"
+#include <utility>
 
 using namespace std;
 
@@ -96,10 +97,14 @@ int main() {
 
     cout<<p1<<"\n"; // afiseaza evenimentele la care participa p1
 
-    cout<<EventManager::instance().status("23/03/2021", e1)<<"\n";
-    cout<<EventManager::instance().status("24/03/2021", e1)<<"\n";
-    cout<<VenueManager::instance().status("23/03/2021", v1)<<"\n";
-    cout<<VenueManager::instance().status("24/03/2021", v1)<<"\n";
+    Manager<EventManager, Event> *m1 = &EventManager::instance();
+    Manager<VenueManager, Venue> *m2 = &VenueManager::instance();
+
+   
+    cout<<m1->status("23/03/2021", e1)<<"\n";
+    cout<<m1->status("24/03/2021", e1)<<"\n";
+    cout<<m2->status("23/03/2021", v1)<<"\n";
+    cout<<m2->status("24/03/2021", v1)<<"\n";
 
 
     cout <<"\n"<< EventManager::instance(); // afisarea evenimentelor
