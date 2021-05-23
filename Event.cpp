@@ -1,0 +1,84 @@
+//
+// Created by Maria Duțu on 15.03.2021.
+//
+
+#include <iostream>
+#include <utility>
+#include "Event.h"
+
+
+Event::Event(std::string _name, std::string _date, std::shared_ptr<Venue> &_venue): name(std::move(_name)), date(std::move(_date)), venue(_venue){}
+
+void Event::setName(const std::string &_name) {
+    name = _name;
+}
+
+void Event::setDate(const std::string &_date) {
+    date = _date;
+}
+
+void Event::setVenue(std::shared_ptr<Venue> &_venue) {
+    venue = _venue;
+}
+
+void Event::setOrganizer(std::weak_ptr <Organizer> _organizer) {
+    organizer = std::move(_organizer);
+}
+
+std::string Event::getName()const {
+    return name;
+}
+
+std::string Event::getDate()const {
+    return date;
+}
+
+std::shared_ptr<Venue> Event::getVenue() const {
+    return venue;
+}
+
+std::optional<std::weak_ptr<Organizer>> Event::getOrganizer()const {
+    return organizer;
+}
+
+std::vector<std::weak_ptr<Participant>> Event::getParticipants() const {
+    return participants;
+}
+
+
+std::ostream &operator<<(std::ostream &os,const std::shared_ptr<Event> &event) {
+    os<< "event: "<<event->getName()<<" "<<event->getDate()<<"\n"<<"\t"<<event->getVenue()->getName()<<"\n";
+    os<<"\n";
+    return os;
+}
+
+Event::~Event() {
+    std::cout << "destructor Event " + name + "\n";
+}
+
+void Event::addParticipant(const std::weak_ptr<Participant> &participant) {
+    participants.push_back(participant);
+    nrParticipants ++;
+}
+
+int Event::getNrParticipants() const {
+    return nrParticipants;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
